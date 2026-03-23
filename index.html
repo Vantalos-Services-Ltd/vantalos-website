@@ -1,1 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vantalos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sand: #d3b99c;
+  --sand-light: #f2e8dc;
+  --sand-mid: #e8d5c0;
+  --sand-dark: #a08060;
+  --sand-deep: #6b5240;
+  --ink: #1a1210;
+  --ink-mid: #4a3f38;
+  --ink-soft: #8a7d74;
+  --page: #faf7f4;
+  --white: #ffffff;
+  --teal: #1D9E75;
+  --teal-light: #E1F5EE;
+  --purple: #534AB7;
+  --purple-light: #EEEDFE;
+  --coral: #D85A30;
+  --coral-light: #FAECE7;
+  --amber: #BA7517;
+  --amber-light: #FAEEDA;
+  --blue: #185FA5;
+  --blue-light: #E6F1FB;
+  --green: #3B6D11;
+  --green-light: #EAF3DE;
+}
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--page);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(250,247,244,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--sand-light);
+  padding: 0 2.5rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--sand-dark); }
+
+.nav-contact {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--sand-dark);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--sand);
+  padding: 0.3rem 0.9rem;
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+
+.nav-contact:hover { background: var(--sand); color: var(--white); }
+
+/* PAGE WRAPPER */
+.page { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(211,185,156,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(211,185,156,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--sand-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--sand-light) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.3;
+}
+
+.hero-inner {
+  max-width: 860px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand-dark);
+  font-weight: 500;
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--sand);
+}
+
+.hero-company {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 10vw, 7.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.hero-sub {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--ink-soft);
+  font-style: italic;
+  letter-spacing: 0.01em;
+  margin-bottom: 1.75rem;
+}
+
+.hero-statement {
+  max-width: 600px;
+  margin: 0 auto 1.25rem;
+}
+
+.hero-statement .main-line {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--ink-mid);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.hero-statement .sub-line {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--ink-soft);
+  font-style: italic;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.hero-thesis {
+  background: var(--white);
+  border: 1px solid var(--sand);
+  border-radius: 12px;
+  padding: 1.25rem 2rem;
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  max-width: 580px;
+  margin: 1.75rem auto 2.5rem;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.hero-thesis strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 100px;
+  font-weight: 500;
+  background: var(--sand-light);
+  color: var(--sand-deep);
+  border: 1px solid var(--sand-mid);
+}
+
+/* DIVIDER */
+.divider {
+  border: none;
+  border-top: 1px solid var(--sand-light);
+  margin: 4rem 0;
+}
+
+/* SECTION */
+.section { padding: 4rem 0; }
+
+.section-label {
+  font-size: 0.63rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand-dark);
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--sand-light);
+  max-width: 40px;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  margin-top: 1.75rem;
+}
+
+p {
+  color: var(--ink-mid);
+  margin-bottom: 1rem;
+  font-size: 0.93rem;
+  font-weight: 300;
+  line-height: 1.85;
+}
+
+p:last-child { margin-bottom: 0; }
+p strong { color: var(--ink); font-weight: 500; }
+
+.callout {
+  border-left: 2px solid var(--sand);
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  margin: 1.75rem 0;
+}
+
+.callout p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+
+/* PROBLEM CARDS */
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+
+@media (max-width: 580px) { .problem-grid { grid-template-columns: 1fr; } }
+
+.problem-card {
+  background: var(--white);
+  border: 1px solid var(--sand-light);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.problem-card-label {
+  font-size: 0.63rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--sand-dark);
+  margin-bottom: 0.6rem;
+}
+
+.problem-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.problem-card p { font-size: 0.85rem; margin-bottom: 0; }
+
+/* OPEN LOOPS VISUAL */
+.loops-visual {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+@media (max-width: 580px) {
+  .loops-visual { grid-template-columns: 1fr; }
+  .loops-arrow { transform: rotate(90deg); }
+}
+
+.loops-pile {
+  background: var(--white);
+  border: 1px solid var(--sand-light);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.loops-pile-label {
+  font-size: 0.63rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin-bottom: 0.75rem;
+}
+
+.loop-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--sand-light);
+  font-size: 0.8rem;
+  color: var(--ink-mid);
+  font-weight: 300;
+}
+
+.loop-item:last-child { border-bottom: none; }
+
+.loop-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.loops-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--sand);
+}
+
+.loops-clear {
+  background: var(--teal-light);
+  border: 1px solid #9FE1CB;
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 180px;
+}
+
+.loops-clear-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #085041;
+  margin-bottom: 0.4rem;
+}
+
+.loops-clear-sub {
+  font-size: 0.78rem;
+  color: #0F6E56;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* COMMISSION */
+.tier-bar {
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1.75rem 0;
+  height: 72px;
+  border: 1px solid var(--sand-light);
+}
+
+.tier-seg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.tier-seg-label { font-size: 0.68rem; font-weight: 300; opacity: 0.8; margin-bottom: 0.15rem; }
+.tier-seg-pct { font-size: 1.05rem; font-weight: 500; }
+
+.earnings-formula {
+  background: var(--white);
+  border: 1px solid var(--sand-light);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.75rem 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--ink-mid);
+  line-height: 2;
+}
+
+.earnings-formula .formula-line {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.formula-part {
+  background: var(--sand-light);
+  border-radius: 6px;
+  padding: 0.2rem 0.6rem;
+  color: var(--sand-deep);
+  font-size: 0.78rem;
+}
+
+.formula-op {
+  color: var(--sand-dark);
+  font-size: 0.9rem;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+
+@media (max-width: 580px) { .compare-grid { grid-template-columns: 1fr; } }
+
+.compare-card {
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.compare-title {
+  font-weight: 500;
+  font-size: 0.88rem;
+  margin-bottom: 0.75rem;
+}
+
+.compare-point {
+  font-size: 0.8rem;
+  font-weight: 300;
+  line-height: 1.6;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+
+.compare-point:last-child { border-bottom: none; }
+
+.compare-point::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+}
+
+/* THREE DIMENSIONS */
+.three-dim {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--sand-light);
+  margin: 1.75rem 0;
+}
+
+@media (max-width: 600px) { .three-dim { grid-template-columns: 1fr; } }
+
+.dim-panel {
+  padding: 1.5rem;
+  border-right: 1px solid rgba(211,185,156,0.25);
+}
+
+.dim-panel:last-child { border-right: none; }
+
+.dim-badge {
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.dim-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.dim-list {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+
+.dim-list li {
+  font-size: 0.78rem;
+  font-weight: 300;
+  line-height: 1.5;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.dim-list li:last-child { border-bottom: none; }
+
+.dim-list li::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+}
+
+/* BANDWIDTH */
+.bw-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+
+@media (max-width: 640px) { .bw-grid { grid-template-columns: 1fr 1fr; } }
+
+.bw-card {
+  border-radius: 10px;
+  padding: 1.1rem 0.9rem;
+  text-align: center;
+}
+
+.bw-title {
+  font-weight: 500;
+  font-size: 0.83rem;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+}
+
+.bw-desc {
+  font-size: 0.72rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* BELIEFS */
+.beliefs { margin: 1.75rem 0; }
+
+.belief {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--sand-light);
+  align-items: flex-start;
+}
+
+.belief:first-child { border-top: 1px solid var(--sand-light); }
+
+.belief-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--sand-dark);
+  padding-top: 0.15rem;
+  flex-shrink: 0;
+  min-width: 20px;
+}
+
+.belief-title {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+
+.belief-body {
+  font-size: 0.83rem;
+  color: var(--ink-mid);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* PRODUCT LAYERS */
+.layer-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--sand-light);
+  margin: 1.75rem 0;
+}
+
+.layer {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  border-bottom: 1px solid rgba(211,185,156,0.2);
+}
+
+.layer:last-child { border-bottom: none; }
+
+.layer-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: var(--sand);
+  color: var(--white);
+  padding: 1.25rem;
+}
+
+.layer-content { padding: 1.1rem 1.4rem; background: var(--white); }
+.layer-title { font-weight: 500; font-size: 0.9rem; color: var(--ink); margin-bottom: 0.25rem; }
+.layer-desc { font-size: 0.82rem; color: var(--ink-mid); font-weight: 300; line-height: 1.65; }
+
+/* CLOSING */
+.closing {
+  padding: 4rem 0;
+}
+
+.closing-inner {
+  background: var(--white);
+  border: 1px solid var(--sand-light);
+  border-radius: 16px;
+  padding: 2.5rem;
+}
+
+.closing-inner h2 { font-size: 1.4rem; margin-bottom: 1rem; }
+
+.contact-line {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--sand-light);
+}
+
+.contact-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.contact-email {
+  font-size: 0.88rem;
+  color: var(--sand-dark);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-email:hover { color: var(--ink); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--sand-light);
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
+
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-inner > * {
+  animation: fadeUp 0.65s ease both;
+}
+.hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-inner > *:nth-child(2) { animation-delay: 0.2s; }
+.hero-inner > *:nth-child(3) { animation-delay: 0.32s; }
+.hero-inner > *:nth-child(4) { animation-delay: 0.44s; }
+.hero-inner > *:nth-child(5) { animation-delay: 0.56s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Vantalos</span>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#problem">The problem</a></li>
+      <li><a href="#thinking">The thinking</a></li>
+      <li><a href="#product">What we're building</a></li>
+      <li><a href="#contact">Say hello</a></li>
+    </ul>
+    <a href="/cdn-cgi/l/email-protection#b5dfdad0f5c3d4dbc1d4d9dac69bd6dad8" class="nav-contact">Get in touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+ 
+    <div class="hero-eyebrow">Vantalos — 2026</div>
+ 
+    <div class="hero-company">Vantalos</div>
+ 
+    <div class="hero-sub">Construction recruitment is a little too chaotic and stressful.</div>
+ 
+    <div class="hero-statement">
+      <div class="sub-line">we think it can be so much better...</div>
+    </div>
+ 
+    <div class="hero-thesis">
+      A tool for construction recruitment consultants. Fewer open loops, one clear priority, and an AI that handles the rest alongside them — so the job can be done well without burning people out.
+    </div>
+ 
+    <div class="hero-tags">
+      <span class="tag">Construction recruitment</span>
+      <span class="tag">Consultant tools</span>
+      <span class="tag">Early stage</span>
+      <span class="tag">Open to conversation</span>
+    </div>
+ 
+  </div>
+</div>
+ 
+<div class="page">
+ 
+  <hr class="divider">
+
+  <!-- THE PROBLEM -->
+  <div class="section" id="problem">
+    <div class="section-label">The problem</div>
+    <h2>Two things that have always been true.</h2>
+
+    <p>Construction recruitment runs almost entirely on WhatsApp, instinct, and a commission structure that most consultants navigate by feel. There's no shortage of hard work. There is a shortage of clarity.</p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-card-label">Problem one</div>
+        <div class="problem-card-title">It burns people out</div>
+        <p>Not in a vague way — in a structural way. Open loops accumulate. Priorities compete. The job creates more unresolved cognitive load than most people can sustainably carry, and the good ones leave because of it.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-label">Problem two</div>
+        <div class="problem-card-title">It rewards the wrong things short-term</div>
+        <p>The consultants who last are the ones who play the long game — relationships, quality placements, retained workers. But the environment pulls hard toward speed and short-termism. It takes unusual discipline to resist that.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>They're connected. The consultant who's always reactive and always depleted is more likely to make short-term decisions that damage the relationships that would have compounded into real income.</p>
+    </div>
+
+    <p>Fix the first and you start to fix the second. That's the idea, anyway.</p>
+
+    <h3>What a typical Tuesday looks like</h3>
+    <p>A consultant opens their phone to something like this — and has to figure out, entirely on their own, what matters most right now.</p>
+
+    <div class="loops-visual">
+      <div class="loops-pile">
+        <div class="loops-pile-label">Open loops — right now</div>
+        <div class="loop-item"><span class="loop-dot" style="background:#D85A30"></span>Worker hasn't shown up — client waiting</div>
+        <div class="loop-item"><span class="loop-dot" style="background:#BA7517"></span>3 candidates unresponded to since yesterday</div>
+        <div class="loop-item"><span class="loop-dot" style="background:#534AB7"></span>New role just came in — haven't read it yet</div>
+        <div class="loop-item"><span class="loop-dot" style="background:#D85A30"></span>Client chasing on a placement from last week</div>
+        <div class="loop-item"><span class="loop-dot" style="background:#8a7d74"></span>Timesheet query from payroll</div>
+        <div class="loop-item"><span class="loop-dot" style="background:#BA7517"></span>Promising candidate — needs chasing today</div>
+        <div class="loop-item"><span class="loop-dot" style="background:#8a7d74"></span>Two more messages not yet opened</div>
+      </div>
+
+      <div class="loops-arrow">→</div>
+
+      <div class="loops-clear">
+        <div class="loops-clear-title">One clear thing.</div>
+        <div class="loops-clear-sub">The most important action right now — for this consultant, at this moment, given everything else that's going on.</div>
+      </div>
+    </div>
+
+    <p>Every one of those open loops persists in the background whether the consultant is actively thinking about it or not. That's not a motivation problem or a time management problem. It's just how attention works.</p>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- COMMISSION -->
+  <div class="section" id="commission">
+    <div class="section-label">The commission picture</div>
+    <h2>Most consultants navigate this entirely by feel.</h2>
+
+    <p>The standard commission structure in construction recruitment is non-linear. Cross certain monthly earnings thresholds and the rate you earn jumps. Below £5k in a month, nothing pays out at all. Above £20k, every additional £1,000 earned pays the consultant £200. Most consultants don't know which tier they're in on any given day.</p>
+
+    <div class="tier-bar">
+      <div class="tier-seg" style="background:#f0ede8; flex:2">
+        <div class="tier-seg-label" style="color:#8a7d74">£0 – £5k</div>
+        <div class="tier-seg-pct" style="color:#8a7d74">0%</div>
+      </div>
+      <div class="tier-seg" style="background:#FAEEDA; flex:2">
+        <div class="tier-seg-label" style="color:#633806">£5k – £10k</div>
+        <div class="tier-seg-pct" style="color:#633806">5%</div>
+      </div>
+      <div class="tier-seg" style="background:#FAC775; flex:4">
+        <div class="tier-seg-label" style="color:#412402">£10k – £20k</div>
+        <div class="tier-seg-pct" style="color:#412402">10–12%</div>
+      </div>
+      <div class="tier-seg" style="background:#EF9F27; flex:3">
+        <div class="tier-seg-label" style="color:#412402">£20k+</div>
+        <div class="tier-seg-pct" style="color:#412402">20%</div>
+      </div>
+    </div>
+
+    <p>Monthly earnings are a function of the margin between what a client gets billed and what the worker gets paid, multiplied across hours worked and number of workers placed.</p>
+
+    <div class="earnings-formula">
+      <div class="formula-line">
+        <span class="formula-part">charge rate − pay rate</span>
+        <span class="formula-op">×</span>
+        <span class="formula-part">hours worked</span>
+        <span class="formula-op">×</span>
+        <span class="formula-part">number of workers</span>
+        <span class="formula-op">=</span>
+        <span class="formula-part">monthly earnings</span>
+      </div>
+    </div>
+
+    <p>The compounding argument is simple when you see it written down. A consultant who builds a retained base of workers billing every week starts each month with a floor — already partway up the tier structure before making a single new placement. A consultant who churns through placements starts from zero every month.</p>
+
+    <div class="compare-grid">
+      <div class="compare-card" style="background:#FAF0F0; border:1px solid #F0958580">
+        <div class="compare-title" style="color:#711F1F">Starting from zero every month</div>
+        <div class="compare-point" style="color:#711F1F"><span style="background:#E24B4A"></span>Must clear £5k floor before anything pays out</div>
+        <div class="compare-point" style="color:#711F1F"><span style="background:#E24B4A"></span>High effort, high variance, income resets monthly</div>
+        <div class="compare-point" style="color:#711F1F"><span style="background:#E24B4A"></span>Every placement earns once, then disappears</div>
+        <div class="compare-point" style="color:#711F1F"><span style="background:#E24B4A"></span>Ceiling determined by how much you can physically do</div>
+      </div>
+      <div class="compare-card" style="background:#EAF6F1; border:1px solid #1D9E7540">
+        <div class="compare-title" style="color:#085041">Starting with a retained base</div>
+        <div class="compare-point" style="color:#085041"><span style="background:#1D9E75"></span>Floor earnings before the month has started</div>
+        <div class="compare-point" style="color:#085041"><span style="background:#1D9E75"></span>New placements immediately earn at a higher rate</div>
+        <div class="compare-point" style="color:#085041"><span style="background:#1D9E75"></span>Placement effort pays out for weeks, not days</div>
+        <div class="compare-point" style="color:#085041"><span style="background:#1D9E75"></span>Income becomes more predictable, less effort-dependent</div>
+      </div>
+    </div>
+
+    <p>This isn't a secret. Most experienced consultants know it instinctively. The question is why so few operate this way — and whether the environment can be designed to make it easier.</p>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- THE THINKING -->
+  <div class="section" id="thinking">
+    <div class="section-label">The thinking</div>
+    <h2>Three things worth optimising at the same time.</h2>
+
+    <p>The way we see it, a consultant's working life sits across three dimensions. Most tools and systems — if they exist at all — address one. We think the interesting problem is all three, simultaneously, and the way they interact.</p>
+
+    <div class="three-dim">
+      <div class="dim-panel" style="background:var(--teal-light)">
+        <span class="dim-badge" style="background:#9FE1CB;color:#085041">Foundation</span>
+        <div class="dim-title" style="color:#085041">Wellbeing</div>
+        <ul class="dim-list">
+          <li style="color:#0F6E56"><span style="background:#1D9E75"></span>Cognitive load — open loops held in working memory</li>
+          <li style="color:#0F6E56"><span style="background:#1D9E75"></span>Emotional load — the weight of competing priorities</li>
+          <li style="color:#0F6E56"><span style="background:#1D9E75"></span>Physical load — pace and volume over time</li>
+          <li style="color:#0F6E56"><span style="background:#1D9E75"></span>Meaning — whether the work feels like it's going somewhere</li>
+        </ul>
+      </div>
+      <div class="dim-panel" style="background:var(--purple-light)">
+        <span class="dim-badge" style="background:#AFA9EC;color:#26215C">Performance</span>
+        <div class="dim-title" style="color:#26215C">Commission</div>
+        <ul class="dim-list">
+          <li style="color:#534AB7"><span style="background:#534AB7"></span>Tier position and month-to-date earnings</li>
+          <li style="color:#534AB7"><span style="background:#534AB7"></span>Retained base and monthly floor value</li>
+          <li style="color:#534AB7"><span style="background:#534AB7"></span>Placement timing within the month</li>
+          <li style="color:#534AB7"><span style="background:#534AB7"></span>Year-end trajectory, not just this month</li>
+        </ul>
+      </div>
+      <div class="dim-panel" style="background:var(--coral-light)">
+        <span class="dim-badge" style="background:#F0997B;color:#4A1B0C">Quality</span>
+        <div class="dim-title" style="color:#4A1B0C">Service</div>
+        <ul class="dim-list">
+          <li style="color:#993C1D"><span style="background:#D85A30"></span>Placing people well, not just fast</li>
+          <li style="color:#993C1D"><span style="background:#D85A30"></span>Client relationships that compound over time</li>
+          <li style="color:#993C1D"><span style="background:#D85A30"></span>Candidate experience that generates referrals</li>
+          <li style="color:#993C1D"><span style="background:#D85A30"></span>Long-term retention, not short-term fills</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>Wellbeing sits underneath the other two because it sets the ceiling on both. A consultant who's depleted makes worse placement decisions and delivers worse service — regardless of how good they are at the job on a good day. That's not a character observation, it's just how attention works under load.</p>
+
+    <h3>What attention actually costs</h3>
+    <p>Open loops are expensive. Not in the time they take — in the attention they hold. A message left unresolved doesn't go away when you close the app. It keeps running in the background, competing with whatever you're supposed to be doing next. The load comes in four forms.</p>
+
+    <div class="bw-grid">
+      <div class="bw-card" style="background:var(--purple-light)">
+        <div class="bw-title" style="color:#26215C">Cognitive</div>
+        <div class="bw-desc" style="color:#534AB7">Open loops and decisions held in working memory without resolution</div>
+      </div>
+      <div class="bw-card" style="background:var(--coral-light)">
+        <div class="bw-title" style="color:#4A1B0C">Emotional</div>
+        <div class="bw-desc" style="color:#993C1D">The weight of competing priorities and unresolved situations</div>
+      </div>
+      <div class="bw-card" style="background:var(--amber-light)">
+        <div class="bw-title" style="color:#412402">Physical</div>
+        <div class="bw-desc" style="color:#633806">Fatigue from sustained volume and constant context-switching</div>
+      </div>
+      <div class="bw-card" style="background:var(--teal-light)">
+        <div class="bw-title" style="color:#085041">Meaning</div>
+        <div class="bw-desc" style="color:#0F6E56">Whether the work feels connected to something worth doing</div>
+      </div>
+    </div>
+
+    <h3>Some things that seem obvious when you say them out loud</h3>
+    <p>These are the hypotheses we're working from. We think they're right. We're building partly to find out.</p>
+
+    <div class="beliefs">
+      <div class="belief">
+        <span class="belief-num">01</span>
+        <div>
+          <div class="belief-title">The consultant who builds well earns more than the one who grinds.</div>
+          <div class="belief-body">Over any meaningful time horizon, a retained base of billing workers beats a constant stream of new placements — financially and in terms of the energy required to sustain it. Most consultants know this. The environment makes it hard to act on.</div>
+        </div>
+      </div>
+      <div class="belief">
+        <span class="belief-num">02</span>
+        <div>
+          <div class="belief-title">If someone's head is full of open loops, they can't think straight.</div>
+          <div class="belief-body">That's not a theory, it's just Tuesday. Reducing that load — not managing it but genuinely reducing it — changes what someone is capable of. A system that closes loops rather than just surfacing them is doing something meaningfully different.</div>
+        </div>
+      </div>
+      <div class="belief">
+        <span class="belief-num">03</span>
+        <div>
+          <div class="belief-title">Momentum is the thing that keeps people going. Stalling is what burns them out.</div>
+          <div class="belief-body">A lot of burnout in this industry isn't from working too hard. It's from working hard and not being able to see whether it's working. Make the progress visible and the energy tends to follow.</div>
+        </div>
+      </div>
+      <div class="belief">
+        <span class="belief-num">04</span>
+        <div>
+          <div class="belief-title">One clear priority beats a list of ten every time.</div>
+          <div class="belief-body">Not a dashboard, not a task list — the single thing that matters most right now given everything else that's going on. That's a harder problem than it looks. But it's the right problem to solve.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- PRODUCT -->
+  <div class="section" id="product">
+    <div class="section-label">What we're building</div>
+    <h2>The idea, in plain English.</h2>
+
+    <p>Construction recruitment runs on WhatsApp. That's not a problem — it's just how the industry works, and it works because it's fast and personal. But all of that context lives in a phone and exists nowhere else. The consultant holds everything in their head. Nobody can see the full picture.</p>
+
+    <p>The tool we're building reads that existing WhatsApp context, understands the relationships and situations inside it, and gives the consultant one clear thing to focus on at any given moment — accounting for where they are in the month, what's active, and what they're trying to achieve. An AI assistant handles the routine alongside them. The stuff that needs a human gets a human.</p>
+
+    <p>No behaviour change required. They already use WhatsApp. They've already built all this context. It just needs to be readable and useful rather than overwhelming.</p>
+
+    <div class="layer-stack">
+      <div class="layer">
+        <div class="layer-num">4</div>
+        <div class="layer-content">
+          <div class="layer-title">AI copilot</div>
+          <div class="layer-desc">Handles the routine alongside the consultant — follow-ups, admin, check-ins. The stuff that doesn't need their full attention gets handled without them having to think about it.</div>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="layer-num">3</div>
+        <div class="layer-content">
+          <div class="layer-title">One priority at a time</div>
+          <div class="layer-desc">The single most important action right now, updated continuously as new messages arrive. Not a list. One thing — the thing that actually moves something forward given the full picture.</div>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="layer-num">2</div>
+        <div class="layer-content">
+          <div class="layer-title">Situational awareness</div>
+          <div class="layer-desc">A clear picture of where things actually stand — active placements, commission position, what's open, what needs attention. What is true right now, not what to do about it.</div>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="layer-num">1</div>
+        <div class="layer-content">
+          <div class="layer-title">Relationship intelligence</div>
+          <div class="layer-desc">Everything from the consultant's WhatsApp history — every client, candidate, worker, and situation — read, understood, and made useful. The existing context, made visible for the first time.</div>
+        </div>
+      </div>
+    </div>
+
+    <p>The goal is simple even if the build isn't: fewer open loops, clearer sense of what matters, less of the day spent reacting and more spent doing the thing that actually moves something forward.</p>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- CONTACT -->
+  <div class="closing" id="contact">
+    <div class="closing-inner">
+
+      <h2>Still early. Genuinely open to conversation.</h2>
+
+      <p>The product is in development. The hypotheses aren't proven yet. What's clear is that the problem is real — and that the people who've been closest to it for longest tend to agree.</p>
+
+      <p>If you work in construction recruitment, or close to it, and any of this sounds familiar — a conversation would be genuinely useful. Not a pitch. Mostly listening at this stage.</p>
+
+      <p>And if you know someone we should be talking to, an introduction would mean a lot.</p>
+
+      <p style="color:var(--ink); font-weight:400; margin-top:1.25rem">Joe Bradley — Founder, Vantalos</p>
+
+      <div class="contact-line">
+        <span class="contact-label">Say hello</span>
+        <a href="/cdn-cgi/l/email-protection#fb91949ebb8d9a958f9a979488d5989496" class="contact-email"><span class="__cf_email__" data-cfemail="ed878288ad9b8c83998c81829ec38e8280">[email&#160;protected]</span></a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <span class="footer-logo">Vantalos</span>
+    <span>Vantalos Services Ltd — 2026</span>
+  </footer>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
